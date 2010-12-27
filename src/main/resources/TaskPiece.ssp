@@ -1,0 +1,12 @@
+<% import sevensenses.util._  %>
+<%@ val m:Map[String, String] %>
+<% val tv = capture(escape(m("taskvalue"))) %>
+        <li id="task_<%=m("key")%>" class="plain">
+          <input type="checkbox" class="finish" <% if (m("isFinished") == "true") { %>checked<% } %> />
+          <span class="showing name"><%=Utility.wrapWithAnchor(tv)%></span>
+          <span class="arranging"><input type="text" class="inputValue" value="<%=tv%>" /></span>
+          <a href="#" class="startArrange showing" onClick="return false;">[UP]</a>
+          <a href="#" class="delete showing" onClick="return false;">[X]</a>
+          <a href="#" class="arranging save" onClick="return false;">[SAVE]</a>
+          <a href="#" class="arranging cancel" onClick="return false;">[CANCEL]</a>
+        </li>

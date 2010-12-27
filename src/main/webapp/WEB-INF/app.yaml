@@ -1,0 +1,17 @@
+application: shpapad
+version: 1
+runtime: java
+
+system_properties:
+  java.util.logging.config.file: WEB-INF/classes/logging.properties
+  scalate.allowReload: false
+  scalate.workdir: WEB-INF
+
+resource_files:
+  - include: /**.scaml
+  - include: /**.ssp
+
+handlers:
+  - url: "/*"
+#    filter: org.fusesource.scalate.servlet.TemplateEngineFilter
+    servlet: sevensenses.TemplateEngineServlet

@@ -1,0 +1,30 @@
+<% import sevensenses.model._ %>
+<%@ val op:String %>
+<%@ val obj:ShpapadView %>
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <link href="/css/index.css" rel="stylesheet" />
+  <title>shpapad</title>
+  <script src="/js/jquery.js"></script>
+  <script src="/js/shpapad.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+
+<% render("header.ssp", Map("op" -> op, "obj" -> obj)) %>
+
+<% render("menu.ssp", Map("op" -> op, "obj" -> obj)) %>
+
+<% render(op + ".ssp") %>
+
+<% render("footer.ssp") %>
+
+  </div>
+</body>
+
+</html>

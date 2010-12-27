@@ -1,0 +1,9 @@
+<%@ val m:Map[String, String] %>
+        <li id="list_<%=m("key")%>">
+          <a href="./task?l=<%=m("key")%>" class="showing"><span class="name"><%=escape(m("listname"))%></span></a> <span class="taskCount showing">(<%=m("count")%>)</span>
+          <span class="arranging"><input type="text" class="inputValue" value="<%=escape(m("listname"))%>" /></span>
+          <a href="#" class="startArrange showing" onClick="return false;">[UP]</a>
+          <a href="#" class="delete showing" onClick="return false;">[X]</a>
+          <a href="#" class="arranging save" onClick="return false;">[SAVE]</a>
+          <a href="#" class="arranging cancel" onClick="return false;">[CANCEL]</a>
+        </li>

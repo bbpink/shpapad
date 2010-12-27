@@ -1,0 +1,28 @@
+<% import sevensenses.model._ %>
+<%@ val op:String %>
+<%@ val obj:Task %>
+<% if (!obj.isListExists) { %>
+ぶっこわれた
+<% } else { %>
+    <section id="content" class="clear">
+      <h2><%=escape(obj.listName)%></h2>
+      <ul id="remaining">
+<% obj.tasks.foreach { x => %>
+<% render("TaskPiece.ssp", Map("m"->x)) %>
+
+
+<% } %>
+        <li id="insert" class="plain">
+          <span class="arranging"><input type="text" class="inputValue" value="" /></span>
+          <a href="#" class="startArrange showing" onClick="return false;">[ADD]</a>
+          <a href="#" class="arranging save" onClick="return false;">[SAVE]</a>
+          <a href="#" class="arranging cancel" onClick="return false;">[CANCEL]</a>
+        </li>
+      </ul>
+
+      <ul id="finished">
+        <li>終わったタスク</li>
+      </ul>
+
+    </section>
+<% } %>

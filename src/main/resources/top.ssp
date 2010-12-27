@@ -1,0 +1,4 @@
+    <section id="content" class="clear">
+      <p id="loginButton"><a href="/list">ログイン</a></p>
+      <p>shpapad(シュパパッド)は、scala+scalate+gae/j でできた <a href="http://www.checkpad.jp/">check*pad</a> の劣化クローンです。</p>
+    </section>
