@@ -84,6 +84,9 @@ class Task() extends ShpapadView with Auth {
 
           try {
 
+            //トランザクション開始
+            val tx = ds.beginTransaction
+
             //Listのエンティティを取得
             val le = ds.get(KeyFactory.stringToKey(m("l").head))
 
@@ -123,6 +126,9 @@ class Task() extends ShpapadView with Auth {
                                                         )
                                                     )
                                      )
+
+              //コミット
+              tx.commit
 
               //JSON化の準備
               body = body.replace("\r\n", "\n").replace("\n", "")
@@ -168,10 +174,21 @@ class Task() extends ShpapadView with Auth {
       if (m.contains("id")) {
 
         try {
-          val e = ds.get(KeyFactory.stringToKey(m("id").head.replace("task_", "")))
-          if (e.getProperty("user").asInstanceOf[User].equals(this.user)) {
+          val te = ds.get(KeyFactory.stringToKey(m("id").head.replace("task_", "")))
+          if (te.getProperty("user").asInstanceOf[User].equals(this.user)) {
 
-            ds.delete(e.getKey)
+            val le = ds.get(te.getParent)
+
+            //トランザクション開始
+            val tx = ds.beginTransaction
+
+            ds.delete(te.getKey)
+            le.setProperty("count", le.getProperty("count").asInstanceOf[Long] - 1)
+            ds.put(le)
+
+            //コミット
+            tx.commit
+
             status = "success"
             body = "おｋ"
 

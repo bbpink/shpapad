@@ -121,6 +121,16 @@ header h1 {
   list-style-type: none;
 }
 
+ul#finished {
+  margin: 40px 0px 0px 0px;
+  color: #aaaaaa;
+}
+
+ul#finished a:link { color: #999999; }
+ul#finished a:visited { color: #999999; }
+ul#finished a:hover { color: #999999; }
+ul#finished a:active { color: #999999; }
+
 /********** footer **********/
 footer {
     margin: 0 auto;
